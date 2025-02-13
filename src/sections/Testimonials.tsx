@@ -73,46 +73,49 @@ const FirstColumn = testimonials.slice(0,3);
 const SecondColumn = testimonials.slice(3,6);
 const ThirdColumn = testimonials.slice(6,9);
 
-const TestimonialColumns = (props: {className?: string; testimonials: typeof testimonials}) =>(
-<div className={twMerge("flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]", props.className)}>
-        {props.testimonials.map(({text,imageSrc, name, username}) => (
-            <div className="p-10 border max-w-xs w-full border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#EAEAEA]">
-            <div>{text}</div>
-            <div className='flex items-center gap-2 mt-5'>
-              <Image src={imageSrc} 
-              alt={name} 
-              width={40} 
-              height={40} 
-              className="rounded-full"/>
-            </div>
-            <div className="flex flex-col">
-                <div className="font-medium tracking-tight leading-5 mt-2">{name}</div>
-                <div className="font-medium tracking-tight leading-5 mt-2">{username}</div>
-            </div>
-            </div>
-          ))}
+const TestimonialColumns = (props: {className?: string; testimonials: typeof testimonials}) => (
+  <div className={twMerge("flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]", props.className)}>
+    {props.testimonials.map(({ text, imageSrc, name, username }, index) => (
+      <div key={index} className="p-10 border max-w-xs w-full border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#EAEAEA]">
+        <div>{text}</div>
+        <div className='flex items-center gap-2 mt-5'>
+          <Image src={imageSrc} 
+            alt={name} 
+            width={40} 
+            height={40} 
+            className="rounded-full"/>
+        </div>
+        <div className="flex flex-col">
+          <div className="font-medium tracking-tight leading-5 mt-2">{name}</div>
+          <div className="font-medium tracking-tight leading-5 mt-2">{username}</div>
+        </div>
       </div>
-)
+    ))}
+  </div>
+);
 
 const Testimonials = () => {
   return (
     <section className="bg-white py-0 px-0">
- <div className="container">
-  <div>
-          <h2 className='text-center font-bold tracking-tighter  bg-gradient-to-b md:text-[54px] md:leading-[60px] from-black to-indigo-800 text-transparent bg-clip-text text-3xl pt-20 mb-5 max-w-[540px] mx-auto '>What our Users Have to Say</h2>
-      <div>
-      <p className=' text-center text-[22px] leading-[30px] tracking-tight'>From intuitive designs to powerful features, our app has<br/> become an essential tool for users around the world
-      </p>
-      </div>  
-      </div>  
-      <div className="flex justify-center gap-6">
-      <TestimonialColumns testimonials={FirstColumn}/>
-      <TestimonialColumns testimonials={SecondColumn} className='hidden md:flex'/>
-      <TestimonialColumns testimonials={ThirdColumn} className='hidden lg:flex'/>
-      </div>
+      <div className="container">
+        <div>
+          <h2 className='text-center font-bold tracking-tighter bg-gradient-to-b md:text-[54px] md:leading-[60px] from-black to-indigo-800 text-transparent bg-clip-text text-3xl pt-20 mb-5 max-w-[540px] mx-auto'>
+            What our Users Have to Say
+          </h2>
+          <div>
+            <p className='text-center text-[22px] leading-[30px] tracking-tight'>
+              From intuitive designs to powerful features, our app has<br/> become an essential tool for users around the world
+            </p>
+          </div>
+        </div>
+        <div className="flex justify-center gap-6">
+          <TestimonialColumns testimonials={FirstColumn} />
+          <TestimonialColumns testimonials={SecondColumn} className='hidden md:flex'/>
+          <TestimonialColumns testimonials={ThirdColumn} className='hidden lg:flex'/>
+        </div>
       </div>
     </section>
-     )
-}
+  );
+};
 testimonials
-export default Testimonials
+export default Testimonials;
