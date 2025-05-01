@@ -7,7 +7,7 @@ const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Tribe Light",
-  description: "Template created by Frontend Tribe",
+  description: "A SAAS landing Page built in Next.js and framer motion",
 };
 
 export default function RootLayout({
